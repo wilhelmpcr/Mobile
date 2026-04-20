@@ -13,6 +13,7 @@ import com.example.exaudiapps.R
 import com.example.exaudiapps.databinding.ActivityAuthBinding
 import com.example.exaudiapps.databinding.ActivityFourthBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import androidx.core.content.edit
 
 class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthBinding
@@ -28,6 +29,18 @@ class AuthActivity : AppCompatActivity() {
 
 
         }
+        //Kode ini harus selalu dipanggil saat butuh akses "user_pref"
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+        //Kondisi jika isLogin bernilai true
+        val isLogin = sharedPref.getBoolean("isLogin", false)
+        if (isLogin) {
+            //Panggil Intent untuk ke MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+
+        }
         binding.btnLogin.setOnClickListener {
             val username = binding.email.text.toString()
             val password = binding.password.text.toString()
@@ -35,9 +48,14 @@ class AuthActivity : AppCompatActivity() {
 
             if (username == password && username.isNotEmpty()) {
 
+                sharedPref.edit {
+                    putBoolean("isLogin", true)
+                    putString("username", username)
+                }
+
+
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                finish() // Menutup AuthActivity agar tidak bisa di-back
             } else {
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Konfirmasi")
