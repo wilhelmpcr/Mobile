@@ -1,4 +1,4 @@
-package com.example.exaudiapps
+package com.example.wilhelmApss
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,13 +6,10 @@ import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.exaudiapps.databinding.ActivityFourthBinding
-import com.example.exaudiapps.databinding.ActivityMainBinding
-import com.example.exaudiapps.databinding.ActivityThirdBinding
-import com.example.exaudiapps.pertemuan2.SecondActivity
-import com.example.exaudiapps.pertemuan4.FourthActivity
+import com.example.wilhelmApss.databinding.ActivityMainBinding
+import com.example.wilhelmApss.pertemuan4.FourthActivity
+import com.example.wilhelmApss.pertemuan5.WebViewActivity
+import com.example.wilhelmApss.pertemuan6.WebActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
@@ -23,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = "Home"
 
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
@@ -35,19 +35,28 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+
+        binding.btnGoWeb.setOnClickListener {
+            val intent = Intent(this, WebActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.bntLogout.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle("Konfirmasi")
-                .setMessage("Apakah Anda yakin ingin melanjutkan?")
+                .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya") { dialog, _ ->
-                    sharedPref.edit() {
+                    sharedPref.edit {
                         clear()
                         apply()
                     }
                     finish()
                     dialog.dismiss()
-                    Log.e("Info Dialog", "Anda memilih Ya!")
+                    Log.e("Info Dialog", "User logged out")
 
+                }
+                .setNegativeButton("Tidak") { dialog, _ ->
+                    dialog.dismiss()
                 }
                 .show()
         }

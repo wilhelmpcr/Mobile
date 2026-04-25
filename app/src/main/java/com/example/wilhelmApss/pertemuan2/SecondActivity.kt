@@ -1,7 +1,7 @@
-package com.example.exaudiapps.pertemuan3
+package com.example.wilhelmApss.pertemuan2
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -9,34 +9,28 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.exaudiapps.R
-import com.example.exaudiapps.databinding.ActivityThirdBinding
+import com.example.wilhelmApss.R
 
-
-class ThidActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityThirdBinding
+class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityThirdBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_second)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
         // Inisialisasi komponen
-//        val noTujuan: EditText = findViewById(R.id.inputNoTujuan)
-//        val btnKirim: Button = findViewById(R.id.btnKirim)
+        val inputNama: EditText = findViewById(R.id.inputNama)
+        val btnSubmit: Button = findViewById(R.id.btnSubmit)
 
-        binding.btnKirim.setOnClickListener {
+        btnSubmit.setOnClickListener {
             //Mengambil value dari inputNama dan menampilkan di Logcat
-            val nomor = binding.inputNoTujuan.text
-            Toast.makeText(this, "Pesan Berhasil Dikirim Ke $nomor", Toast.LENGTH_SHORT).show()
+            val nama = inputNama.text
+            Log.e("Klik btnSubmit","Tombol berhasil di tekan. Isi dari inputNama = $nama")
 
-            val intent = Intent(this, ThirdResultctivity::class.java)
-            startActivity(intent)
-
+            Toast.makeText(this, "Anda telah melakukan klik pada tombol Submit", Toast.LENGTH_SHORT).show()
         }
     }
 }

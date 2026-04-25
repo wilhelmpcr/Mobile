@@ -1,17 +1,15 @@
-package com.example.exaudiapps.pertemuan6
+package com.example.wilhelmApss.pertemuan6
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.exaudiapps.MainActivity
-import com.example.exaudiapps.R
-import com.example.exaudiapps.databinding.ActivityAuthBinding
-import com.example.exaudiapps.databinding.ActivityFourthBinding
+import com.example.wilhelmApss.MainActivity
+import com.example.wilhelmApss.R
+import com.example.wilhelmApss.databinding.ActivityAuthBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.core.content.edit
 

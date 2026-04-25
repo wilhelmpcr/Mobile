@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,7 +12,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ExaudiApps">
+        android:theme="@style/Theme.wilhelmApss">
+        <activity
+            android:name=".pertemuan6.WebActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pertemuan5.WebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".pertemuan6.AuthActivity"
             android:exported="false" />

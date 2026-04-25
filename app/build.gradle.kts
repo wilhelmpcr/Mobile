@@ -1,17 +1,16 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "com.example.exaudiapps"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = "com.example.wilhelmApss"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.exaudiapps"
+        applicationId = "com.example.wilhelmApss"
         minSdk = 28
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -31,7 +30,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    buildFeatures{
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+    buildFeatures {
         viewBinding = true
     }
 }

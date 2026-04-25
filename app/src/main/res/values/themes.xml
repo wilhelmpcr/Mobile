@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ExaudiApps" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.wilhelmApss" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.ExaudiApps" parent="Base.Theme.ExaudiApps" />
+    <style name="Theme.wilhelmApss" parent="Base.Theme.wilhelmApss" />
 </resources>

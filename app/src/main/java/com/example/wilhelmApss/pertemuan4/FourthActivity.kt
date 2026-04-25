@@ -1,4 +1,4 @@
-package com.example.exaudiapps.pertemuan4
+package com.example.wilhelmApss.pertemuan4
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,10 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.exaudiapps.MainActivity
-import com.example.exaudiapps.R
-import com.example.exaudiapps.databinding.ActivityFourthBinding
-import com.example.exaudiapps.databinding.ActivityMainBinding
+import com.example.wilhelmApss.MainActivity
+import com.example.wilhelmApss.R
+import com.example.wilhelmApss.databinding.ActivityFourthBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,7 +21,12 @@ class FourthActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityFourthBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets

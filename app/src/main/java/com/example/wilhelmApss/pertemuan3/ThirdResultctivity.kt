@@ -1,17 +1,17 @@
-package com.example.exaudiapps.pertemuan5
+package com.example.wilhelmApss.pertemuan3
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.exaudiapps.R
+import com.example.wilhelmApss.R
 
-class VideoActivity : AppCompatActivity() {
+class ThirdResultctivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_video)
+        setContentView(R.layout.activity_third_resultctivity)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
