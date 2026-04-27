@@ -2,7 +2,6 @@ package com.example.wilhelmApss.Home.pertemuan6
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,13 +28,13 @@ class AuthActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
         binding.btnLogin.setOnClickListener {
-            val username = binding.email.text.toString()
+            val email = binding.email.text.toString()
             val password = binding.password.text.toString()
 
-            if (username == password && username.isNotEmpty()) {
+            if (email == password && email.isNotEmpty() && password.isNotEmpty()) {
                 sharedPref.edit {
                     putBoolean("isLogin", true)
-                    putString("username", username)
+                    putString("email", email)
                 }
 
                 val intent = Intent(this, BaseActivity::class.java)
@@ -43,11 +42,10 @@ class AuthActivity : AppCompatActivity() {
                 finish()
             } else {
                 MaterialAlertDialogBuilder(this)
-                    .setTitle("Konfirmasi")
-                    .setMessage("Apakah Anda yakin ingin melanjutkan?")
-                    .setPositiveButton("Ya") { dialog, _ ->
+                    .setTitle("Oopss...")
+                    .setMessage("Email atau Password salah!")
+                    .setPositiveButton("Close") { dialog, _ ->
                         dialog.dismiss()
-                        Log.e("Info Dialog", "Anda memilih Ya!")
                     }
                     .show()
             }
