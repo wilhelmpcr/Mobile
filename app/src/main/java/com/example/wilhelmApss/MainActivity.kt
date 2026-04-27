@@ -8,10 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.example.wilhelmApss.databinding.ActivityMainBinding
 import com.example.wilhelmApss.pertemuan4.FourthActivity
-import com.example.wilhelmApss.pertemuan5.WebViewActivity
 import com.example.wilhelmApss.pertemuan6.WebActivity
+import com.example.wilhelmApss.pertemuan7.SeventhActivity // Tambahkan import ini
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,13 +25,18 @@ class MainActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 
+        // Tombol ke Pertemuan 4
         binding.btnToFourth.setOnClickListener {
             val intent = Intent(this, FourthActivity::class.java)
-
             intent.putExtra("name", "Politeknik Caltex Riau")
             intent.putExtra("from", "Rumbai")
             intent.putExtra("age", 25)
+            startActivity(intent)
+        }
 
+        // Tombol ke Pertemuan 7 (BARU)
+        binding.btnToSeventh.setOnClickListener {
+            val intent = Intent(this, SeventhActivity::class.java)
             startActivity(intent)
         }
 
@@ -53,7 +57,6 @@ class MainActivity : AppCompatActivity() {
                     finish()
                     dialog.dismiss()
                     Log.e("Info Dialog", "User logged out")
-
                 }
                 .setNegativeButton("Tidak") { dialog, _ ->
                     dialog.dismiss()
