@@ -14,41 +14,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.wilhelmApss">
         <activity
-            android:name=".pertemuan7.SeventhActivity"
+            android:name=".Home.pertemuan7.SeventhActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan6.WebActivity"
+            android:name=".Home.pertemuan6.WebActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan5.WebViewActivity"
+            android:name=".Home.pertemuan5.WebViewActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan6.AuthActivity"
+            android:name=".AuthActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan4.FourthActivity"
+            android:name=".Home.pertemuan4.FourthActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan3.ThirdResultctivity"
+            android:name=".Home.pertemuan3.ThirdResultctivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan2.SecondActivity"
+            android:name=".Home.pertemuan2.SecondActivity"
             android:exported="false" />
         <activity
-            android:name=".pertemuan3.ThidActivity"
+            android:name=".Home.pertemuan3.ThidActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".BaseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

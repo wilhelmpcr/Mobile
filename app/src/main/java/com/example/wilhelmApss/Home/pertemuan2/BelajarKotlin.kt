@@ -1,4 +1,4 @@
-package com.example.wilhelmApss.pertemuan2
+package com.example.wilhelmApss.Home.pertemuan2
 
 fun main(){
     println("Hai rekan-rekan..")

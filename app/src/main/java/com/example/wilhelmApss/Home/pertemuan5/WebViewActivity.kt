@@ -1,4 +1,4 @@
-package com.example.wilhelmApss.pertemuan5
+package com.example.wilhelmApss.Home.pertemuan5
 
 import android.os.Bundle
 import android.webkit.WebViewClient
@@ -6,16 +6,20 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.wilhelmApss.databinding.ActivityWebBinding
+import com.example.wilhelmApss.databinding.ActivityWebViewBinding
 
-class WebActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityWebBinding
+class WebViewActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityWebViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityWebBinding.inflate(layoutInflater)
+        binding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

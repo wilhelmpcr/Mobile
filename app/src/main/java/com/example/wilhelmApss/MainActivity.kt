@@ -7,9 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.example.wilhelmApss.databinding.ActivityMainBinding
-import com.example.wilhelmApss.pertemuan4.FourthActivity
-import com.example.wilhelmApss.pertemuan6.WebActivity
-import com.example.wilhelmApss.pertemuan7.SeventhActivity // Tambahkan import ini
+import com.example.wilhelmApss.Home.pertemuan4.FourthActivity
+import com.example.wilhelmApss.Home.pertemuan6.WebActivity
+import com.example.wilhelmApss.Home.pertemuan7.SeventhActivity // Tambahkan import ini
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {

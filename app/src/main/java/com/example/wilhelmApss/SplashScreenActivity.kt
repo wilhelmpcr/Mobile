@@ -9,7 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.wilhelmApss.databinding.ActivitySplashScreenBinding
-import com.example.wilhelmApss.pertemuan6.AuthActivity
+import com.example.wilhelmApss.Home.pertemuan6.AuthActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -40,7 +40,7 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(2500) // Sedikit lebih lama untuk efek animasi
             
             val targetActivity = if (isLogin) {
-                MainActivity::class.java
+                BaseActivity::class.java
             } else {
                 AuthActivity::class.java
             }
