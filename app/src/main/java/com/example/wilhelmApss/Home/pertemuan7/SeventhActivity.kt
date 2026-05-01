@@ -19,16 +19,13 @@ class SeventhActivity : AppCompatActivity() {
         binding = ActivitySeventhBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // --- KONFIGURASI TOOLBAR & BACK BUTTON ---
         setSupportActionBar(binding.toolbar7)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true) // Munculkan tombol back
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Pertemuan 7"
 
-        // Fungsi ketika tombol back diklik
         binding.toolbar7.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
-        // ------------------------------------------
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -36,8 +33,10 @@ class SeventhActivity : AppCompatActivity() {
             insets
         }
 
+        // --- INI ADALAH BAGIAN YANG MENYEBABKAN BUG HALAMAN PUTIH ---
         if (savedInstanceState == null) {
-            replaceFragment(SatuFragment())
+            // Memanggil fungsi yang mengandung addToBackStack pada fragment pertama
+            replaceFragment(SatuFragment()) 
         }
 
         binding.btnFragment1.setOnClickListener {
@@ -54,6 +53,7 @@ class SeventhActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(fragment: Fragment) {
+        // BUG: Selalu menambahkan ke backstack tanpa pengecekan
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
