@@ -19,16 +19,13 @@ class SeventhActivity : AppCompatActivity() {
         binding = ActivitySeventhBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // --- KONFIGURASI TOOLBAR & BACK BUTTON ---
         setSupportActionBar(binding.toolbar7)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true) // Munculkan tombol back
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Pertemuan 7"
 
-        // Fungsi ketika tombol back diklik
         binding.toolbar7.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
-        // ------------------------------------------
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -36,8 +33,9 @@ class SeventhActivity : AppCompatActivity() {
             insets
         }
 
+        // PERBAIKAN: Jangan tambahkan fragment pertama ke backstack untuk menghindari halaman putih
         if (savedInstanceState == null) {
-            replaceFragment(SatuFragment())
+            replaceFragment(SatuFragment(), false) 
         }
 
         binding.btnFragment1.setOnClickListener {
@@ -53,10 +51,15 @@ class SeventhActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
+    // PERBAIKAN: Menambahkan parameter addToBackStack dengan default true
+    private fun replaceFragment(fragment: Fragment, addToBackStack: Boolean = true) {
+        val transaction = supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .commit()
+        
+        if (addToBackStack) {
+            transaction.addToBackStack(null)
+        }
+        
+        transaction.commit()
     }
 }
