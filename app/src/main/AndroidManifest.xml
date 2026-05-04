@@ -12,32 +12,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.wilhelmApss">
-
+        <activity
+            android:name=".Home.pertemuan9.NinthActivity"
+            android:exported="false" />
         <activity
             android:name=".BaseActivity"
             android:exported="false" />
-
         <activity
             android:name=".Home.pertemuan7.SeventhActivity"
             android:exported="false" />
-
         <activity
             android:name=".Home.pertemuan6.AuthActivity"
             android:exported="false" />
-
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Home.pertemuan5.FifthActivity"
             android:exported="false" />
-
         <activity
             android:name=".Home.pertemuan6.WebActivity"
             android:exported="false" />
@@ -59,7 +57,6 @@
         <activity
             android:name=".Home.pertemuan3.ThidActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
