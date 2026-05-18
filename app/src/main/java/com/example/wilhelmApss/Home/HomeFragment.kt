@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import com.example.wilhelmApss.Home.pertemuan10.TenthActivity
 import com.example.wilhelmApss.Home.pertemuan2.SecondActivity
 import com.example.wilhelmApss.Home.pertemuan3.ThidActivity
 import com.example.wilhelmApss.Home.pertemuan4.FourthActivity
@@ -75,6 +76,10 @@ class HomeFragment : Fragment() {
 
         binding.btnToNinth.setOnClickListener {
             startActivity(Intent(requireContext(), NinthActivity::class.java))
+        }
+
+        binding.btnToTenth.setOnClickListener {
+            startActivity(Intent(requireContext(), TenthActivity::class.java))
         }
 
         binding.bntLogout.setOnClickListener {

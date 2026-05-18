@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.wilhelmApss">
         <activity
+            android:name=".Home.pertemuan10.ProductAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan10.ProductModel"
+            android:exported="false" />
+        <activity
+            android:name=".Home.pertemuan10.TenthActivity"
+            android:exported="false" />
+        <activity
             android:name=".Home.pertemuan9.NinthActivity"
             android:exported="false" />
         <activity
