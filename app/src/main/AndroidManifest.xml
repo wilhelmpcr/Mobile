@@ -13,10 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.wilhelmApss">
         <activity
-            android:name=".Home.pertemuan10.ProductAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".Home.pertemuan10.ProductModel"
+            android:name=".Home.tutorial.TutorialMessageActivity"
             android:exported="false" />
         <activity
             android:name=".Home.pertemuan10.TenthActivity"
@@ -38,7 +35,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
