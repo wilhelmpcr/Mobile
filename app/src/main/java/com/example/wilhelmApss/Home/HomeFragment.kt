@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import androidx.lifecycle.lifecycleScope
+import com.example.wilhelmApss.Home.pertemuan10.TenthActivity
 import com.example.wilhelmApss.Home.pertemuan2.SecondActivity
 import com.example.wilhelmApss.Home.pertemuan3.ThidActivity
 import com.example.wilhelmApss.Home.pertemuan4.FourthActivity
@@ -17,10 +20,12 @@ import com.example.wilhelmApss.Home.pertemuan5.FifthActivity
 import com.example.wilhelmApss.Home.pertemuan5.WebActivity
 import com.example.wilhelmApss.Home.pertemuan7.SeventhActivity
 import com.example.wilhelmApss.Home.pertemuan_9.NinthActivity
-import com.example.wilhelmApss.Home.pertemuan_10.TenthActivity
+import com.example.wilhelmApss.Home.pertemuan_10.TenthActivity as TenthActivity_
 import com.example.wilhelmApss.Home.pertemuan_13.ThirteenthActivity
+import com.example.wilhelmApss.data.api.CatFactApiClient
 import com.example.wilhelmApss.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
@@ -46,6 +51,13 @@ class HomeFragment : Fragment() {
 
         val sharedPref = requireContext().getSharedPreferences("user_pref", MODE_PRIVATE)
 
+        // Load Cat Fact
+        loadCatFact()
+
+        binding.btnRefresh.setOnClickListener {
+            loadCatFact()
+        }
+
         binding.btnToSecond.setOnClickListener {
             startActivity(Intent(requireContext(), SecondActivity::class.java))
         }
@@ -67,7 +79,6 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnToSixth.setOnClickListener {
-            // Karena package pertemuan6 kosong, saya arahkan ke WebActivity sebagai contoh
             startActivity(Intent(requireContext(), WebActivity::class.java))
         }
 
@@ -80,7 +91,8 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnToTenth.setOnClickListener {
-            startActivity(Intent(requireContext(), TenthActivity::class.java))
+            // Priority to local TenthActivity from pertemuan_10 if btn exists
+            startActivity(Intent(requireContext(), TenthActivity_::class.java))
         }
 
         binding.btnToThirteenth.setOnClickListener {
@@ -104,6 +116,19 @@ class HomeFragment : Fragment() {
                     dialog.dismiss()
                 }
                 .show()
+        }
+    }
+
+    private fun loadCatFact() {
+        lifecycleScope.launch {
+            binding.tvCatFact.text = "Loading cat fact..."
+            try {
+                val response = CatFactApiClient.apiService.getCatFact()
+                binding.tvCatFact.text = "\"${response.fact}\""
+            } catch (e: Exception) {
+                binding.tvCatFact.text = "Gagal mengambil fakta kucing."
+                Log.e("API Error", "Error fetching cat fact", e)
+            }
         }
     }
 

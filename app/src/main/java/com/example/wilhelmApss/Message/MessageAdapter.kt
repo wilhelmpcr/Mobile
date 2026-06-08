@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.bumptech.glide.Glide
-import com.example.wilhelmApss.databinding.ItemMessageBinding
 import com.google.android.material.snackbar.Snackbar
+import com.example.wilhelmApss.databinding.ItemMessageBinding
 
 class MessageAdapter(
     context: Context,
@@ -15,23 +15,33 @@ class MessageAdapter(
 ) : ArrayAdapter<MessageModel>(context, 0, messages) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        // Menggunakan View Binding untuk item layout
-        val binding = ItemMessageBinding.inflate(LayoutInflater.from(context), parent, false)
-        val view = binding.root
+        val binding: ItemMessageBinding
+        val view: View
+
+        if (convertView == null) {
+            binding = ItemMessageBinding.inflate(LayoutInflater.from(context), parent, false)
+            view = binding.root
+            view.tag = binding
+        } else {
+            binding = convertView.tag as ItemMessageBinding
+            view = convertView
+        }
 
         val data = messages[position]
 
-        // Menampilkan gambar menggunakan Glide
+        // Load image with Glide
         Glide.with(context)
             .load(data.avatarUrl)
-            .placeholder(android.R.drawable.progress_horizontal)
+            .centerCrop()
+            .placeholder(android.R.drawable.ic_menu_gallery)
             .error(android.R.drawable.stat_notify_error)
             .into(binding.avatarImg)
 
+        // Set text data
         binding.textSender.text = data.senderName
         binding.textMessage.text = data.messageText
 
-        // Implementasi OnClick pada setiap item
+        // Handle click event
         view.setOnClickListener {
             Snackbar.make(
                 parent,
